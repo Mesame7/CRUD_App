@@ -1,0 +1,37 @@
+<div mat-dialog-title>
+    <h1>
+        Person Form
+    </h1>
+</div>
+<form [formGroup]="personForm" (ngSubmit)="onFormSubmit()">
+    <div matDialogContent class="person-content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Vorname</mat-label>
+                <input matInput type="text" formControlName="firstName">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Nachname</mat-label>
+                <input matInput type="text" formControlName="lastName">
+            </mat-form-field>
+        </div>
+    
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" placeholder="Ex. admin@google.com" formControlName="email">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>ID? Should we use?</mat-label>
+                <input matInput type="text" formControlName="id">
+            </mat-form-field>
+        </div>
+    
+        
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button> Cancel</button>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+    </div>
+    
+</form>

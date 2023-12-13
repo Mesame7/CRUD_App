@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { PerAddEditComponent } from './per-add-edit/per-add-edit.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'CRUD_App';
+  
+constructor(private _dialog: MatDialog){}
+openAddEditPersonForm(){
+  this._dialog.open(PerAddEditComponent);
+}
+
 }
