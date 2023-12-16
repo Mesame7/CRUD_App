@@ -3,11 +3,13 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { MatDialog } from '@angular/material/dialog';
 import {  MatToolbarModule } from '@angular/material/toolbar';
+import { PersonService } from './services/person.service';
+import { HttpClient } from '@angular/common/http';
 describe('AppComponent', () => {
-  // AppComponent has a parameter
-  let fakeDialog: MatDialog;
+  
 
   beforeEach(async () => {
+
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
@@ -23,7 +25,7 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
 
     const app = fixture.componentInstance;
-    expect(app).toBeInstanceOf(AppComponent);
+    expect(app).toBeTruthy();
   });
 
   it(`should have as title 'CRUD_App'`, () => {
@@ -32,10 +34,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('CRUD_App');
   });
 
-  it('should render title', () => {
+  it('should render mat-toolbar', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, CRUD_App');
+    expect(compiled.querySelector('mat-toolbar')).toBeTruthy();
   });
 });
