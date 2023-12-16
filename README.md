@@ -1,27 +1,38 @@
-# CRUDApp
+# CRUDAPP
+## Introduction
+This project is an exercise requested for a job position. Throughout the development of this app, I intend to learn more about web applications with Angular, JSON-server and testing with Jasmine and TDD.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.6.
+## Development steps
+### 1. Understand the requested business:
+After reading the task description, I understand that I need to create a CRUD(Create, Read, Update and Delete) application with Angular. This CRUD application handles management of instances of the Person object. A Person object has the following attributes: ID, Vorname, Nachname and E-Mail-Adresse. The user should be able to create a Person, list the existing instances of Person by the Vorname/Nachname attribute, edit a Person instance and also remove a Person instance from the list.
 
-## Development server
+### 2. "Google is so powerful when you know how to use it." :
+I was told this sentence by my supervisor when I used to ask them too many questions, and indeed I could find many resources that explain how to use Angular to build a simple UI to visualize my business/model. This UI has a button that opens a form that we can later use to fill in a Person's attributes, and also a part where we can see all the existing instances of Person.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### 3. What can we test?
+Before starting this project I had some previous experience with writing Unit tests. I started reading and watching youtube videos on testing and I learned about more testing methods that could be applied to this project. I decided to start with testing the major task which the CRUD functionality, and if there's time I could write tests for the UI components and maybe e2e tests. 
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 4.CRUD Testing:
+Through testing we need to make sure that the different CRUD functions are working fine.
+#### Create: 
+It should be tested that:
+- A Person was created and added to the DB successfully and it exists there.
+- A Person cannot be added to the DB if it already exists in it (same E-mail or same ID).
+#### Read:
+It should be tested that:
+- A person can be read successfully with all its attributes after being added to the DB.
 
-## Build
+#### Update:
+It should be tested that:
+- The attributes of a Person can be edited successfully and the DB is also holding the last updated version of the Person instance.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+#### Delete:
+It should be tested that:
+- The attributes of a Person can be edited successfully and the DB is also holding the last updated version of the Person instance.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Notes:
+- I had issues running tests with mat-toolbar, I have a question for that on stackoverflow. [Question](https://stackoverflow.com/questions/77669494/testing-angular-with-template-containing-mat-toolbar/77669511#77669511)

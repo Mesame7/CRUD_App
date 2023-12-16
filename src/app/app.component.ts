@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PerAddEditComponent } from './per-add-edit/per-add-edit.component';
+import { MatToolbar } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-root',
