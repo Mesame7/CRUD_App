@@ -36,3 +36,5 @@ It should be tested that:
 
 ## Notes:
 - I had issues running tests with mat-toolbar, I have a question for that on stackoverflow. [Question](https://stackoverflow.com/questions/77669494/testing-angular-with-template-containing-mat-toolbar/77669511#77669511)
+- It's always important to remember to include all the modules of injected classed in the test files.
+- For CRUD Testing, I found this interesting [article](https://jenijoe.medium.com/unit-testing-angular-crud-service-with-jasmine-7e40e7c8aa74).
