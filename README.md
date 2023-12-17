@@ -33,6 +33,12 @@ It should be tested that:
 
 
 
+### 5. Writing tests
+#### UI Tests
+
+#### CRUD Tests
+
+
 
 ## Notes:
 - I had issues running tests with mat-toolbar, I have a question for that on stackoverflow. [Question](https://stackoverflow.com/questions/77669494/testing-angular-with-template-containing-mat-toolbar/77669511#77669511)

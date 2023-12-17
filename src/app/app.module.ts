@@ -12,7 +12,9 @@ import {MatInputModule} from '@angular/material/input';
 import { PerAddEditComponent } from './per-add-edit/per-add-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,10 @@ import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     MatInputModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
  
   providers: [

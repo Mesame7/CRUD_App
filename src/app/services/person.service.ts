@@ -12,7 +12,7 @@ export class PersonService {
   }
 
 
-  getAllPerson(){//:Observable<any[]>{//Array<{firstName:string,lastName:string,email:string}>{
+  getAllPerson():any{//:Observable<any[]>{//Array<{firstName:string,lastName:string,email:string}>{   
     return this._http.get('http://localhost:3000/persons');
   }
 }
