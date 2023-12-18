@@ -118,7 +118,7 @@ describe('PersonService', () => {
     const createObj = {  "firstName": "Neuer Vorname",
     "lastName": "Neuer Nachname",
     "email": "Addresse@X.com" };
-    myPersonService.addPerson(createObj).subscribe(res => {
+    myPersonService.addPerson(createObj)?.subscribe((res:any) => {
       expect(res.firstName).toBe('Neuer Vorname');
     });
     const req = httpTestingController.expectOne(url, 'post to api');

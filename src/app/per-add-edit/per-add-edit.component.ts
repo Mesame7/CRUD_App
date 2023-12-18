@@ -23,7 +23,7 @@ constructor(private _formBuilder:FormBuilder,
 
 onFormSubmit(){
   if(this.personForm.valid){
-    this._personService.addPerson(this.personForm.value).subscribe({
+    this._personService.addPerson(this.personForm.value)?.subscribe({
       next:(val:any)=>{
         alert('Person Added')
         this.dialogRef.close();

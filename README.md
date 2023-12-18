@@ -18,7 +18,7 @@ Through testing we need to make sure that the different CRUD functions are worki
 #### Create: 
 It should be tested that:
 - A Person was created and added to the DB successfully and it exists there.
-- A Person cannot be added to the DB if it already exists in it (same E-mail or same ID).
+- A Person cannot be added to the DB if it already exists in it (same E-mail).
 #### Read:
 It should be tested that:
 - A person can be read successfully with all its attributes after being added to the DB.

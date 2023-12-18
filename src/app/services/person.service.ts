@@ -10,7 +10,7 @@ export class PersonService {
 
 
 
-  addPerson(pData: any): Observable<any>{
+  addPerson(pData: any){
     return this._http.post(this._url,pData)
   }
   deletePerson(id:number) {
