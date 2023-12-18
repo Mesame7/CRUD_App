@@ -4,7 +4,12 @@ import { AppComponent } from './app.component';
 import { MatDialog } from '@angular/material/dialog';
 import {  MatToolbarModule } from '@angular/material/toolbar';
 import { PersonService } from './services/person.service';
-import { HttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { provideAnimations } from '@angular/platform-browser/animations';
 describe('AppComponent', () => {
   
 
@@ -13,10 +18,18 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        MatToolbarModule
+        MatToolbarModule,
+        HttpClientModule,
+        MatFormFieldModule,
+        MatPaginatorModule,
+        MatTableModule,
+        MatInputModule // always add when testing form
       ],
       declarations: [
         AppComponent
+      ],
+      providers:[
+        provideAnimations()
       ]
     }).compileComponents();
   });
