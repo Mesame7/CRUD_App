@@ -9,6 +9,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { CoreService } from './core/core.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -24,7 +25,9 @@ export class AppComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private _dialog: MatDialog, private _personService: PersonService) { }
+  constructor(private _dialog: MatDialog,
+     private _personService: PersonService,
+     private _coreService: CoreService) { }
   openAddEditPersonForm() {
     const dialogRef=this._dialog.open(PerAddEditComponent);
     dialogRef.afterClosed().subscribe({
@@ -61,7 +64,7 @@ export class AppComponent implements OnInit {
     this._personService.deletePerson(id).subscribe({
       next: (res) => {
         this.updateList();
-        alert('Person Deleted');
+        this._coreService.openSnackBar('Person Deleted');
       },
       error: console.log,
     });

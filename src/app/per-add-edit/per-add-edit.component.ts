@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PersonService } from '../services/person.service';
 import {  MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { CoreService } from '../core/core.service';
 
 @Component({
   selector: 'app-per-add-edit',
@@ -14,7 +15,8 @@ constructor(
   private _formBuilder:FormBuilder,
   private _personService:PersonService,
   private dialogRef: MatDialogRef<PerAddEditComponent>,
-  @Inject(MAT_DIALOG_DATA) public data:any){
+  @Inject(MAT_DIALOG_DATA) public data:any,
+  private _coreService: CoreService){
   this.personForm=this._formBuilder.group({
     firstName:'',
     lastName:'',
@@ -31,7 +33,7 @@ onFormSubmit(){
     if(this.data){
       this._personService.updatePerson(this.personForm.value,this.data.id)?.subscribe({
         next:(val:any)=>{
-          alert('Person Updated')
+          this._coreService.openSnackBar('Person Updated');
           this.dialogRef.close(true);
         },
         error:(err:any)=>{
@@ -41,7 +43,7 @@ onFormSubmit(){
     }else{
       this._personService.addPerson(this.personForm.value)?.subscribe({
         next:(val:any)=>{
-          alert('Person Added')
+          this._coreService.openSnackBar('Person Added');
           this.dialogRef.close(true);
         },
         error:(err:any)=>{

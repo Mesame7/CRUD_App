@@ -16,18 +16,5 @@
   "profile": {
     "name": "typicode"
   },
-  "persons": [
-    {
-      "firstName": "Ahmed",
-      "lastName": "Mansour",
-      "email": "ahmed",
-      "id": 7
-    },
-    {
-      "firstName": "Ahmed",
-      "lastName": "Mesameh",
-      "email": "asd",
-      "id": 8
-    }
-  ]
+  "persons": []
 }
