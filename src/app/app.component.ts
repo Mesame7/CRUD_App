@@ -66,6 +66,19 @@ export class AppComponent implements OnInit {
       error: console.log,
     });
   }
+  openEditForm(data:any){
+    const dialogRef=this._dialog.open(PerAddEditComponent,{
+      data,
+    });
+    dialogRef.afterClosed().subscribe({
+      next:(val)=>{
+        if(val){
+          this.updateList();
+        }
+      }
+    })
+
+  }
 
   // A method to update the List, we can call it whenever
   // a change to the list happends.
