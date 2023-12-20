@@ -9,7 +9,7 @@
 <div class="main-body">
   <mat-form-field>
     <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Ahmed" #input>
   </mat-form-field>
 
   <div class="table-container-person">
@@ -48,7 +48,7 @@
           </button>
 
 
-          <button mat-icon-button color="warn">
+          <button mat-icon-button color="warn" (click)="deletePerson(row.id)">
             <mat-icon>delete</mat-icon>
           </button>
         </td>

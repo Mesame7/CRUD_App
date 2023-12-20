@@ -17,7 +17,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 export class AppComponent implements OnInit {
   title = 'CRUD_App';
 
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email','action'];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -26,10 +26,17 @@ export class AppComponent implements OnInit {
 
   constructor(private _dialog: MatDialog, private _personService: PersonService) { }
   openAddEditPersonForm() {
-    this._dialog.open(PerAddEditComponent);
+    const dialogRef=this._dialog.open(PerAddEditComponent);
+    dialogRef.afterClosed().subscribe({
+      next:(val)=>{
+        if(val){
+          this.updateList();
+        }
+      }
+    })
   }
   ngOnInit(): void {
-    this.getPersonList()
+    this.updateList();
   }
   getPersonList() {
     this._personService.getAllPerson().subscribe({
@@ -50,5 +57,20 @@ export class AppComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  deletePerson(id: number) {
+    this._personService.deletePerson(id).subscribe({
+      next: (res) => {
+        this.updateList();
+        alert('Person Deleted');
+      },
+      error: console.log,
+    });
+  }
 
+  // A method to update the List, we can call it whenever
+  // a change to the list happends.
+  updateList(){
+    this.getPersonList();
+  }
 }
+

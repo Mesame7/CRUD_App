@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PersonService } from '../services/person.service';
-import { DialogRef } from '@angular/cdk/dialog';
+import {  MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-per-add-edit',
@@ -12,7 +12,7 @@ export class PerAddEditComponent {
 personForm: FormGroup;
 constructor(private _formBuilder:FormBuilder,
   private _personService:PersonService,
-  private dialogRef: DialogRef<PerAddEditComponent>){
+  private dialogRef: MatDialogRef<PerAddEditComponent>){
   this.personForm=this._formBuilder.group({
     firstName:'',
     lastName:'',
@@ -26,7 +26,7 @@ onFormSubmit(){
     this._personService.addPerson(this.personForm.value)?.subscribe({
       next:(val:any)=>{
         alert('Person Added')
-        this.dialogRef.close();
+        this.dialogRef.close(true);
       },
       error:(err:any)=>{
         console.error(err)

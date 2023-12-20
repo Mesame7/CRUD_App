@@ -45,3 +45,4 @@ It should be tested that:
 - It's always important to remember to include all the modules of injected classed in the test files.
 - For CRUD Testing, I found this interesting [article](https://jenijoe.medium.com/unit-testing-angular-crud-service-with-jasmine-7e40e7c8aa74).
 - If you have time, please create a seperate class for Person object and try to clean the code.
+- I thought of excluding the id property from the input form because it will make the code more complicated (to validate the existance of a user with the same id), but eventaully I decided to keep and invest time in learning how to handle this validation.
