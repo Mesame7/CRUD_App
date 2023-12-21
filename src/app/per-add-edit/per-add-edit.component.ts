@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PersonService } from '../services/person.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CoreService } from '../core/core.service';
@@ -21,9 +21,9 @@ export class PerAddEditComponent implements OnInit {
     private _coreService: CoreService) {
 
     this.personForm = this._formBuilder.group({
-      firstName: '',
-      lastName: '',
-      email: '',
+      firstName: ['',Validators.required],
+      lastName: ['',Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       // id:'',
     });
   }
@@ -68,6 +68,14 @@ export class PerAddEditComponent implements OnInit {
       }
     })
   }
-
+  get email() {
+    return this.personForm.get('email');
+  }
+  get firstName(){
+    return this.personForm.get('firstName');
+  }
+  get lastName(){
+    return this.personForm.get('lastName');
+  }
 }
 

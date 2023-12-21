@@ -8,18 +8,30 @@
         <div class="row">
             <mat-form-field appearance="outline">
                 <mat-label>Vorname</mat-label>
-                <input matInput type="text" formControlName="firstName">
+                <input matInput required="true" type="text" formControlName="firstName">
+                <mat-error *ngIf="firstName!.hasError('required')">
+                    Vorname ist erforderlich.
+                </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Nachname</mat-label>
-                <input matInput type="text" formControlName="lastName">
+                <input matInput required="true" type="text" formControlName="lastName">
+                <mat-error *ngIf="lastName!.hasError('required')">
+                    Nachname ist erforderlich.
+                </mat-error>
             </mat-form-field>
         </div>
     
         <div class="row">
             <mat-form-field appearance="outline">
                 <mat-label>E-Mail-Addresse</mat-label>
-                <input matInput type="email" placeholder="Bsp. admin@google.com" formControlName="email">
+                <input matInput required="true" type="email" placeholder="Bsp. admin@google.com" formControlName="email">
+                <mat-error *ngIf="email!.hasError('email') && !email!.hasError('required')">
+                    Bitte geben Sie eine gültige E-Mail Adresse ein.
+                </mat-error>
+                <mat-error *ngIf="email!.hasError('required')">
+                    E-Mail ist erforderlich.
+                </mat-error>
             </mat-form-field>
             <!-- <mat-form-field appearance="outline">
                 <mat-label>ID? Should we use?</mat-label>
