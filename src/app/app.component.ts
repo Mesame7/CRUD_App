@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PerAddEditComponent } from './per-add-edit/per-add-edit.component';
-import { MatToolbar } from '@angular/material/toolbar';
 import { PersonService } from './services/person.service';
-import { AfterViewInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatSort, MatSortModule } from '@angular/material/sort';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { CoreService } from './core/core.service';
 @Component({
   selector: 'app-root',
@@ -26,13 +23,17 @@ export class AppComponent implements OnInit {
 
 
   constructor(private _dialog: MatDialog,
-     private _personService: PersonService,
-     private _coreService: CoreService) { }
+    private _personService: PersonService,
+    private _coreService: CoreService) { }
+
+  /**
+* Handles the event when the user clicks on AddPerson or the Edit icon.
+*/
   openAddEditPersonForm() {
-    const dialogRef=this._dialog.open(PerAddEditComponent);
+    const dialogRef = this._dialog.open(PerAddEditComponent);
     dialogRef.afterClosed().subscribe({
-      next:(val)=>{
-        if(val){
+      next: (val) => {
+        if (val) {
           this.updateList();
         }
       }
@@ -41,7 +42,11 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.updateList();
   }
-  getPersonList() {
+      /**
+* A method to update the List, we can call it whenever 
+* a change to the list happends.
+*/
+  updateList() {
     this._personService.getAllPerson().subscribe({
       next: (res: any[]) => {
         this.dataSource = new MatTableDataSource(res);
@@ -60,6 +65,11 @@ export class AppComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+    /**
+* Handles the event when the user clicks on the delete icon.
+*
+* @param {number} id - ID of Person instance in that row.
+*/
   deletePerson(id: number) {
     this._personService.deletePerson(id).subscribe({
       next: (res) => {
@@ -69,13 +79,18 @@ export class AppComponent implements OnInit {
       error: console.log,
     });
   }
-  openEditForm(data:any){
-    const dialogRef=this._dialog.open(PerAddEditComponent,{
+  /**
+* Handles the event when the user clicks on the edit icon.
+*
+* @param {any} data - Person instance in that row.
+*/
+  openEditForm(data: any) {
+    const dialogRef = this._dialog.open(PerAddEditComponent, {
       data,
     });
     dialogRef.afterClosed().subscribe({
-      next:(val)=>{
-        if(val){
+      next: (val) => {
+        if (val) {
           this.updateList();
         }
       }
@@ -83,10 +98,5 @@ export class AppComponent implements OnInit {
 
   }
 
-  // A method to update the List, we can call it whenever
-  // a change to the list happends.
-  updateList(){
-    this.getPersonList();
-  }
 }
 

@@ -1,14 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PerAddEditComponent } from './per-add-edit.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { DialogRef } from '@angular/cdk/dialog';
-import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from '../app.component';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+
 
 describe('PerAddEditComponent', () => {
   let component: PerAddEditComponent;
@@ -16,25 +14,31 @@ describe('PerAddEditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-  
-      imports:[
+
+      imports: [
         HttpClientModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         MatFormFieldModule,
-        MatInputModule
+        MatInputModule,
+        MatDialogModule
       ],
       declarations: [PerAddEditComponent],
-      providers:[
+      providers: [
         provideAnimations(),//whenever we have any dependency on animation(I guess here we have the dialog, submit button)
-        HttpClient,{
-        provide: DialogRef,
-        useValue: []
-      }]
-      
+        HttpClient, {
+          provide: MatDialogRef,
+          useValue: []
+        },
+        {
+          provide: MAT_DIALOG_DATA, useValue: {}
+        },
+
+      ]
+
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(PerAddEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

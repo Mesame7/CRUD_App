@@ -1,17 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { MatDialog } from '@angular/material/dialog';
-import {  MatToolbarModule } from '@angular/material/toolbar';
-import { PersonService } from './services/person.service';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
-import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { HttpClientModule } from '@angular/common/http';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { provideAnimations } from '@angular/platform-browser/animations';
 describe('AppComponent', () => {
-  
+
 
   beforeEach(async () => {
 
@@ -28,7 +26,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-      providers:[
+      providers: [
         provideAnimations()
       ]
     }).compileComponents();
