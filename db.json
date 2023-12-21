@@ -16,5 +16,18 @@
   "profile": {
     "name": "typicode"
   },
-  "persons": []
+  "persons": [
+    {
+      "firstName": "Ahmed",
+      "lastName": "Mansour",
+      "email": "ahmed.alaa.mesameh@gmail.com",
+      "id": 1
+    },
+    {
+      "firstName": "Mohamed",
+      "lastName": "Mansour",
+      "email": "mmm",
+      "id": 2
+    }
+  ]
 }

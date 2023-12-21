@@ -2,14 +2,14 @@
   <span>CRUD Exercise</span>
   <span class="example-spacer"></span>
   <button mat-raised-button (click)="openAddEditPersonForm()">
-    Add Person
+    Person hinzufügen
   </button>
 </mat-toolbar>
 
 <div class="main-body">
   <mat-form-field>
     <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Ahmed" #input>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Bsp. Ahmed" #input>
   </mat-form-field>
 
   <div class="table-container-person">
@@ -59,7 +59,7 @@
 
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">{{input.value.trim().length===0?'Please add data first!':"No data matching the filter "+input.value}}</td>
+        <td class="mat-cell" colspan="4">{{input.value.trim().length===0?'Bitte fügen Sie einige Instanzen von Person hinzu!':"Es gibt keine Daten, die dem Filter "+input.value +" entsprechen!"}}</td>
       </tr>
     </table>
 

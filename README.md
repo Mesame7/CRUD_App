@@ -1,4 +1,26 @@
 # CRUDAPP
+## How to run this code?
+- Please install all the missing packages with the following commands in CMD:
+```console
+npm install -g @angular/cli
+npm i -g json-server  
+npm install --save-dev jasmine
+npm i karma
+``` 
+- Use the following command to run the web app in a browser:
+```console
+ng serve -o
+``` 
+- Then use this command to have the start the json-server with the database
+```console
+json-server --watch db.json
+```
+- If you want to run the tests, **please start the json-server first** and then run this command:
+```console
+ng test
+```
+
+# Steps
 ## Introduction
 This project is an exercise requested for a job position. Throughout the development of this app, I intend to learn more about web applications with Angular, JSON-server and testing with Jasmine and TDD.
 
@@ -12,8 +34,10 @@ I was told this sentence by my supervisor when I used to ask them too many quest
 ### 3. What can we test?
 Before starting this project I had some previous experience with writing Unit tests. I started reading and watching youtube videos on testing and I learned about more testing methods that could be applied to this project. I decided to start with testing the major task which the CRUD functionality, and if there's time I could write tests for the UI components and maybe e2e tests. 
 
+### 4. Database
+To save the Person objects, json-server was used to provide a json Database which I use to add and keep the objects. Inside the database we have a /persons path in which we keep the Person objects as json objects with the attributes: firstName, lastName, email, id. 
 
-### 4.CRUD Testing:
+### 5.CRUD Testing:
 Through testing we need to make sure that the different CRUD functions are working fine.
 #### Create: 
 It should be tested that:
@@ -29,14 +53,18 @@ It should be tested that:
 
 #### Delete:
 It should be tested that:
-- The attributes of a Person can be edited successfully and the DB is also holding the last updated version of the Person instance.
+- The attributes of a Person can be deleted successfully and the DB is no longer containing that Person.
 
 
 
-### 5. Writing tests
+### 6. Writing tests
+I'm using Jasmine to write unit tests for both UI and the API. 
 #### UI Tests
+    Default UI Tests were kept and configured to run successfully
 
-#### CRUD Tests
+### 7. Coding depends on tests
+Every time I change some code, I check the status of the tests and see if all of them pass or not, and investigate why some of them are not passing. This way I make sure that my development is driven by the tests status.
+
 
 
 
@@ -44,5 +72,4 @@ It should be tested that:
 - I had issues running tests with mat-toolbar, I have a question for that on stackoverflow. [Question](https://stackoverflow.com/questions/77669494/testing-angular-with-template-containing-mat-toolbar/77669511#77669511)
 - It's always important to remember to include all the modules of injected classed in the test files.
 - For CRUD Testing, I found this interesting [article](https://jenijoe.medium.com/unit-testing-angular-crud-service-with-jasmine-7e40e7c8aa74).
-- If you have time, please create a seperate class for Person object and try to clean the code.
 - I thought of excluding the id property from the input form because it will make the code more complicated (to validate the existance of a user with the same id), but eventaully I decided to keep and invest time in learning how to handle this validation.
