@@ -11,15 +11,17 @@ npm i karma
 ```console
 ng serve -o
 ``` 
-- Then use this command to have the start the json-server with the database
+- Then open another terminal and use this command to start the json-server with the database
 ```console
 json-server --watch db.json
 ```
-- If you want to run the tests, **please start the json-server first** and then run this command:
+- If you want to run the tests, **please start the json-server first** and then open a new terminal to run this command:
 ```console
 ng test
 ```
-
+- You might need to remove these files to run the previous commands:
+  - C:\Users\USERNAME\AppData\Roaming\npm\ng.ps1
+  - C:\Users\USERNAME\AppData\Roaming\npm\json-server.ps1
 # Steps
 ## Introduction
 This project is an exercise requested for a job position. Throughout the development of this app, I intend to learn more about web applications with Angular, JSON-server and testing with Jasmine and TDD.
