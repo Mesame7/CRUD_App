@@ -62,7 +62,9 @@ It should be tested that:
 ### 6. Writing tests
 I'm using Jasmine to write unit tests for both UI and the API. 
 #### UI Tests
-    Default UI Tests were kept and configured to run successfully
+Default UI Tests were kept and configured to run successfully.
+#### API Tests
+I wrote mock tests to verify the API messages are being sent as expected.
 
 ### 7. Coding depends on tests
 Every time I change some code, I check the status of the tests and see if all of them pass or not, and investigate why some of them are not passing. This way I make sure that my development is driven by the tests status.
