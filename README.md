@@ -15,7 +15,7 @@ ng serve -o
 ```console
 json-server --watch db.json
 ```
-- If you want to run the tests, **please start the json-server first** and then open a new terminal to run this command:
+- If you want to run the tests please open a new terminal to run this command:
 ```console
 ng test
 ```
@@ -75,3 +75,4 @@ Every time I change some code, I check the status of the tests and see if all of
 - It's always important to remember to include all the modules of injected classed in the test files.
 - For CRUD Testing, I found this interesting [article](https://jenijoe.medium.com/unit-testing-angular-crud-service-with-jasmine-7e40e7c8aa74).
 - I thought of excluding the id property from the input form because it will make the code more complicated (to validate the existance of a user with the same id), but eventaully I decided to keep and invest time in learning how to handle this validation.
+- I discovered a mistake in some CRUD tests and I'm using Karma debug on chrome to find the issue.

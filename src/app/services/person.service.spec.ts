@@ -8,12 +8,11 @@ describe('PersonService', () => {
   let myPersonService: PersonService;
   let httpTestingController: HttpTestingController;
   let url = 'http://localhost:3000/persons';
-  //let httpClient: HttpClient;
 
   const mockData = {
     "persons": [
       {
-        "firstName": "asd",
+        "firstName": "asdqweqweW",
         "lastName": "asd",
         "email": "asdd",
         "id": 1
@@ -43,10 +42,8 @@ describe('PersonService', () => {
         HttpClientTestingModule
       ]
     });
-    //httpClient=TestBed.inject(HttpClient);
-    //myPersonService=new PersonService(httpClient);
 
-    myPersonService = TestBed.inject(PersonService,);
+    myPersonService = TestBed.inject(PersonService);
     httpTestingController = TestBed.inject(HttpTestingController);
 
 
@@ -75,14 +72,20 @@ describe('PersonService', () => {
   });
 
   it('getById should make a GET HTTP request with id appended to end of url', () => {
+    const mockObj ={
+      "firstName": "asdqweqweW",
+      "lastName": "asd",
+      "email": "asdd",
+      "id": 1
+    };
     myPersonService.getPersonById(1).subscribe(res => {
-      expect(res).toEqual(mockData);
+      expect(res).toEqual(mockObj);
     });
     const req = httpTestingController.expectOne(url + '/1');
     expect(req.request.method).toBe('GET');
     expect(req.cancelled).toBeFalsy();
     expect(req.request.responseType).toEqual('json');
-    req.flush(mockData);
+    req.flush(mockObj);
     httpTestingController.verify();
   });
   it('delete should make a DELETE HTTP request with id appended to end of url', () => {
@@ -117,7 +120,8 @@ describe('PersonService', () => {
   it('create should make a POST HTTP request with resource as body', () => {
     const createObj = {  "firstName": "Neuer Vorname",
     "lastName": "Neuer Nachname",
-    "email": "Addresse@X.com" };
+    "email": "Addresse@X.com",
+    "id":"0" };
     myPersonService.addPerson(createObj)?.subscribe((res:any) => {
       expect(res.firstName).toBe('Neuer Vorname');
     });

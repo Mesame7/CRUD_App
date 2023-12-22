@@ -24,7 +24,6 @@ export class PerAddEditComponent implements OnInit {
       firstName: ['',Validators.required],
       lastName: ['',Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      // id:'',
     });
   }
 
@@ -45,7 +44,11 @@ export class PerAddEditComponent implements OnInit {
 
     }
   }
-  
+
+    /**
+ * Helper function to update the Person in DB and trigger list updating after that.
+ *
+ **/
   private helperPersonUpdate() {
     this._personService.updatePerson(this.personForm.value, this.data.id)?.subscribe({
       next: (val: any) => {
@@ -57,6 +60,11 @@ export class PerAddEditComponent implements OnInit {
       }
     });
   }
+
+      /**
+ * Helper function to add the Person in DB and trigger list updating after that.
+ *
+ **/
   private helperPersonAdd() {
     this._personService.addPerson(this.personForm.value)?.subscribe({
       next: (val: any) => {
@@ -68,12 +76,15 @@ export class PerAddEditComponent implements OnInit {
       }
     })
   }
+
   get email() {
     return this.personForm.get('email');
   }
+
   get firstName(){
     return this.personForm.get('firstName');
   }
+
   get lastName(){
     return this.personForm.get('lastName');
   }
